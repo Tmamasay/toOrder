@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-icon": "/static/iView/icon/index"
+},
+  "navigationBarTitleText": "添加备注"
+}

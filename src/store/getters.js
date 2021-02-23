@@ -1,0 +1,22 @@
+const getters = {
+  baseurl: state => state.user.baseurl,
+  token: state => state.user.token,
+  type: state => state.user.type,
+  cardid: state => state.user.card_id,
+  userSt: state => state.user.userSt,
+  formid: state => state.user.mblists,
+  isPlayMusicId: state => state.user.isPlayMusicId,
+  userId: state => state.user.userId,
+  levelCode: state => state.user.levelCode,
+  type:state => state.user.type,
+  tabIndex:state => state.user.tabIndex,
+  storeId:state => state.user.storeId,
+  carNum:state => state.user.carNum,
+  // spShow:state => state.user.spShow,
+  // spShow_tea:state => state.user.spShow_tea,
+  carNone:state => state.user.carNone,
+  orderId:state => state.user.orderId,
+  remark:state => state.user.remark,
+  hbId:state => state.user.hbId,
+}
+export default getters

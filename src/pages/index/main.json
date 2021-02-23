@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "i-tabs": "/static/iView/tabs/index",
+    "i-tab": "/static/iView/tab/index",
+    "i-drawer": "/static/iView/drawer/index",
+    "i-icon": "/static/iView/icon/index",
+    "i-toast": "/static/iView/toast/index"
+},
+  "navigationBarTitleText": "",
+  "navigationStyle":"custom",
+  "backgroundColor":"#f7f8fa"
+}

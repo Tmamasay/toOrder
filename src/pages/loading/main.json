@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-icon": "/static/iView/icon/index"
+  },
+  "navigationBarTitleText": "",
+  "navigationStyle":"custom",
+  "backgroundColor":"#f7f7f7"
+}

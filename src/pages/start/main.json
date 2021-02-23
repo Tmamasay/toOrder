@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-icon": "/static/iView/icon/index"
+},
+  "navigationBarTitleText": "易点单delicious",
+  "navigationStyle":"custom"
+}

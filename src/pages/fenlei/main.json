@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-tabs": "/static/iView/tabs/index",
+    "i-tab": "/static/iView/tab/index",
+    "i-icon": "/static/iView/icon/index",
+    "i-input": "/static/iView/input/index",
+    "i-action-sheet": "/static/iView/action-sheet/index"
+},
+  "navigationBarTitleText": "商品分类",
+  "navigationStyle":"custom"
+}
