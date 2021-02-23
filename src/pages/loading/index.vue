@@ -22,8 +22,8 @@ export default {
     console.log(decodeURIComponent(_this.$root.$mp.query.scene))
     console.log(_this.$root.$mp.query.storeId)
     console.log('system sd------>')
-    const storeId=_this.$root.$mp.query.scene||_this.$root.$mp.query.storeId||getStoreId()||null
-    // const storeId='13154897910240'
+    // const storeId=_this.$root.$mp.query.scene||_this.$root.$mp.query.storeId||getStoreId()||null
+    const storeId='13154897910237'
     if(storeId){  
     if(!getToken()){
       wx.login({

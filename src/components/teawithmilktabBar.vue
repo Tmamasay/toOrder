@@ -38,12 +38,6 @@ export default {
           selectedIconPath:'/static/tabs/fenlei_hover.png',
         }, 
         {
-          pagePath: '/pages/order/main',
-          text: '订单',
-          iconPath: '/static/tabs/gwc.png',
-          selectedIconPath:'/static/tabs/gwc_hover.png',
-        },
-        {
           pagePath: '/pages/my/main',
           text: '我的',
           iconPath: '/static/tabs/wd.png',

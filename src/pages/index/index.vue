@@ -15,26 +15,27 @@
       </div>
     </div>
     <div class="index_content_box">
-      <div class="dd" @click="tofenlei">
+      <div class="dd" >
         <img src="/static/images/index_dd.jpg" alt="">
         <div class="text_box">
-          <p class="title">开始点单</p>
-          <p class="text">无需等待·快速点单</p>
+          <p class="title">金妈家南坪协信店</p>
+          <p class="text">当前桌号_103</p>
         </div>
       </div>
       <div class="jfHy_box">
-        <div class="box" @click="toJifen">
-          <img src="/static/images/index_jj.jpg" alt="">
-          <div class="text_box">
-            <p class="title">积分商城</p>
-            <p class="text">优享派劵·兑换</p>
-          </div>
-        </div>
+        
         <div class="box" @click="Noyanf">
           <img src="/static/images/index_hy.jpg" alt="">
           <div class="text_box">
             <p class="title">会员码</p>
             <p class="text">我的会员码</p>
+          </div>
+        </div>
+        <div class="box" @click="tofenlei">
+          <img src="/static/images/index_jj.jpg" alt="">
+          <div class="text_box">
+            <p class="title">立即点单</p>
+            <p class="text">美食美味·即享</p>
           </div>
         </div>
       </div>
@@ -282,16 +283,16 @@ page{
 }
 .index_content_box .text_box{
   position: absolute;
-  top:30rpx;
+  top:20rpx;
   left:30rpx;
   font-size:46rpx;
   color:#171a20;
   font-weight: 600;
 }
 .index_content_box .text_box .text{
-  font-size:26rpx;
+  font-size:35rpx;
   color:#171a20;
-  margin-top:15rpx;
+  margin-top:5rpx;
   font-weight: 400;
 }
 .index_content_box .jfHy_box{

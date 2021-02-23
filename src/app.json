@@ -8,7 +8,7 @@
     "pages/authorize/main",
     "pages/fenlei/main",
     "pages/my/main",
-    "pages/my/contactUs/main",
+    "pages/my/contactUs/main"
   ],
   "plugins": {
     "chooseLocation": {
@@ -36,10 +36,6 @@
         "pagePath": "pages/fenlei/main",
         "text": "组件"
       }, 
-      {
-        "pagePath": "pages/order/main",
-        "text": "接口"
-      },
       {
         "pagePath": "pages/my/main",
         "text": "接口"
