@@ -870,57 +870,57 @@ export default {
           this.isDisable = false;
         });
     },
-    //清空购物车
-    clearCar() {
-      let _this = this;
-      let options = {
-        storeId: _this.$store.state.user.storeId,
-      };
-      wx.showModal({
-        title: "提示",
-        content: "确认清除购物车？",
-        success(res) {
-          console.log(res);
-          if (res.confirm) {
-            _this.$api.user.clearShopCart(options).then((res) => {
-              console.log(res);
-              if (res.status) {
-                wx.showToast({
-                  title: "已清空购物车",
-                  icon: "none",
-                  duration: 1000,
-                });
-                _this.carList.forEach((res) => {
-                  var spList = _this.fenleiList.filter(
-                    (item) => item.id === res.goods.goodsTypeId + ""
-                  );
-                  console.log(spList);
-                  spList.forEach((child) => {
-                    child.spNum = 0;
-                    if (child.children.length !== 0) {
-                      child.children.forEach((arr) => {
-                        arr.spNum = 0;
-                      });
-                    }
-                  });
-                });
-                _this.totalPriceNum = 0;
-                _this.carListLength = 0;
-                _this.getShezhi();
-                _this.getCarList();
-                _this.closeSpdetailsCar();
-              }
-            });
-          } else {
-            wx.showToast({
-              title: "取消清除",
-              icon: "none",
-              duration: 1000,
-            });
-          }
-        },
-      });
-    },
+    // //清空购物车
+    // clearCar() {
+    //   let _this = this;
+    //   let options = {
+    //     storeId: _this.$store.state.user.storeId,
+    //   };
+    //   wx.showModal({
+    //     title: "提示",
+    //     content: "确认清除购物车？",
+    //     success(res) {
+    //       console.log(res);
+    //       if (res.confirm) {
+    //         _this.$api.user.clearShopCart(options).then((res) => {
+    //           console.log(res);
+    //           if (res.status) {
+    //             wx.showToast({
+    //               title: "已清空购物车",
+    //               icon: "none",
+    //               duration: 1000,
+    //             });
+    //             _this.carList.forEach((res) => {
+    //               var spList = _this.fenleiList.filter(
+    //                 (item) => item.id === res.goods.goodsTypeId + ""
+    //               );
+    //               console.log(spList);
+    //               spList.forEach((child) => {
+    //                 child.spNum = 0;
+    //                 if (child.children.length !== 0) {
+    //                   child.children.forEach((arr) => {
+    //                     arr.spNum = 0;
+    //                   });
+    //                 }
+    //               });
+    //             });
+    //             _this.totalPriceNum = 0;
+    //             _this.carListLength = 0;
+    //             _this.getShezhi();
+    //             _this.getCarList();
+    //             _this.closeSpdetailsCar();
+    //           }
+    //         });
+    //       } else {
+    //         wx.showToast({
+    //           title: "取消清除",
+    //           icon: "none",
+    //           duration: 1000,
+    //         });
+    //       }
+    //     },
+    //   });
+    // },
     //清空分类label标识位
     clearXUZ() {
       console.log('当前购物车没有商品，复位计数为0')
@@ -1102,7 +1102,7 @@ export default {
     this.changeSpShow = false
 
     //进入页面-关闭购物车弹窗
-    this.closeSpdetailsCar()
+    // this.closeSpdetailsCar()
 
     //进入页面-关闭sku弹窗
     this.closeSpdetails();
