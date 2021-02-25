@@ -1,10 +1,10 @@
 {
-  "pages": [
-    
+  "pages": [  
     "pages/loading/main",
     "pages/start/main",
     "pages/index/main",
     "pages/remarks/main",
+    "pages/order/main",
     "pages/authorize/main",
     "pages/fenlei/main",
     "pages/my/main",

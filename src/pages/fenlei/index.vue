@@ -146,12 +146,11 @@
         </scroll-view>
       </div>
       <!-- 选择的商品背景 -->
-      <div
+      <!-- <div
         v-if="carList.length !== 0"
         :class="spShow ? 'xz_sp_box_active xz_sp_box' : 'xz_sp_box'"
         @click.stop="closeSpdetailsCar"
       >
-        <!-- 选择的商品 -->
         <div class="positon" @click.stop=''>
             <div
             :animation="aniSpHop"
@@ -188,7 +187,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- 浮窗 -->
       <div class="car_fc_box" @click.stop="sp_pop" :style="{bottom:isIphoneXnum+'px'}">
         <div class="carPosition">
@@ -295,8 +294,7 @@
               <div class="addSp">
                 
                 <div v-if="stockNum>0">
-                <p v-if="newGm === 1" class="add_button" @click="gmSubmit">立即购买</p>
-                <p v-else class="add_button" @click="addGwc">选好了</p>
+                <p class="add_button" @click="addGwc">选好了</p>
                 </div>
                 <div v-else>
                   <p  class="add_buttonNo" >暂无库存</p>
@@ -494,30 +492,36 @@ export default {
         }
       });
     },
+    sp_pop(){
+      wx.navigateTo({
+          url: `/pages/order/main`
+      }); 
 
-    //购物车弹窗
-    sp_pop() {
-      this.spShow = true;
-      const query = wx.createSelectorQuery();
-      query.select(".xz_sp").boundingClientRect((res) => {
-        console.log(res);
-        easeAnimation_sp.translateY(-130+'px').step();
-        this.aniSpHop = easeAnimation_sp.export();
-      }).exec();
-      wx.hideToast();
     },
 
-    //关闭购物车弹窗弹窗
-    closeSpdetailsCar() {
-      console.log("关闭");
-      this.spShow = false;
-      const query = wx.createSelectorQuery();
-      query.select(".xz_sp").boundingClientRect((res) => {
-        console.log(res);
-        easeAnimation_sp.translateY(500+'px').step();
-        this.aniSpHop = easeAnimation_sp.export();
-      }) .exec();
-    },
+    // //购物车弹窗
+    // sp_pop() {
+    //   this.spShow = true;
+    //   const query = wx.createSelectorQuery();
+    //   query.select(".xz_sp").boundingClientRect((res) => {
+    //     console.log(res);
+    //     easeAnimation_sp.translateY(-130+'px').step();
+    //     this.aniSpHop = easeAnimation_sp.export();
+    //   }).exec();
+    //   wx.hideToast();
+    // },
+
+    // //关闭购物车弹窗弹窗
+    // closeSpdetailsCar() {
+    //   console.log("关闭");
+    //   this.spShow = false;
+    //   const query = wx.createSelectorQuery();
+    //   query.select(".xz_sp").boundingClientRect((res) => {
+    //     console.log(res);
+    //     easeAnimation_sp.translateY(500+'px').step();
+    //     this.aniSpHop = easeAnimation_sp.export();
+    //   }) .exec();
+    // },
 
     //选规格弹窗-SKU选择
     spdetails:Debounce(function(index, i, id) {
@@ -765,98 +769,52 @@ export default {
         }
       });
     },
-    //购物车-减商品
-    reduce(index, item) {
-      console.log(item)
-      let _this = this;
-      console.log(index, item);
-      var num = _this.carList[index].goodsNum--;
-      console.log(_this.carList.length)
-      if (num <= 1) {
-        this.carList = this.carList.filter(i => i.sku.id !== item.sku.id)
-        console.log(this.carList)
-        let data = {
-          skuId: item.sku.id,
-          storeId: _this.$store.state.user.storeId,
-        };
-        _this.$api.user
-          .delShopCartOneSku(data)
-          .then((res) => {
-            if (res.status) {
-              _this.carListLength--;
-              _this.reduceAdd(item,0);
-              _this.totalPrice();
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } else {
-        let options = {
-          goodsNum: 1,
-          skuId: item.sku.id,
-          storeId: _this.$store.state.user.storeId,
-        };
-        _this.$api.user.reduceShopCart(options).then((res) => {
-          console.log(res);
-          if (res.status) {
-            _this.carListLength--;
-            // _this.reduceAdd(item,0);
-          }
-          _this.totalPrice();
-        });
-      }
-      if (this.carList.length === 0) {
-        this.closeSpdetailsCar();
-      }
+    // //购物车-加商品
+    // add(index, item) {
+    //   let _this = this;
+    //   var num = _this.carList[index].goodsNum++;
+    //   let options = {
+    //     goodsNum: 1,
+    //     skuId: item.sku.id,
+    //     storeId: _this.$store.state.user.storeId,
+    //   };
+    //   _this.$api.user.addShopCart(options).then((res) => {
+    //     if (res.status) {
+    //       console.log(item);
+    //       this.carListLength++;
+    //       // _this.reduceAdd(item,1);
+    //     }
+    //     _this.totalPrice();
+    //   });
+    // },
 
-    },
-    //购物车-加商品
-    add(index, item) {
-      let _this = this;
-      var num = _this.carList[index].goodsNum++;
-      let options = {
-        goodsNum: 1,
-        skuId: item.sku.id,
-        storeId: _this.$store.state.user.storeId,
-      };
-      _this.$api.user.addShopCart(options).then((res) => {
-        if (res.status) {
-          console.log(item);
-          this.carListLength++;
-          // _this.reduceAdd(item,1);
-        }
-        _this.totalPrice();
-      });
-    },
-
-    //购物车加减商品-对应列表label数量
-    reduceAdd(arr,num) {
-      this.fenleiList.forEach((list) => {
-        if (list.children.length !== 0) {
-          var sp = list.children.findIndex((child) => child.id === arr.sku.goodsId);
-          if(sp!==-1){
-            if(!num){
-                 list.children[sp].spNum=list.children[sp].spNum--
-                 console.log(list.children[sp].spNum--)
-                 console.log(list.children[sp].spNum)
-                 console.log('caaac------------------->')
-                }else{
-                  list.children[sp].spNum ++
-                }
-              list.spNum = 0;
-              list.children.forEach((child) => {
-            if (child.spNum) {
-               list.spNum+=child.spNum
-                console.log(list.spNum)
-            }
-          });
-          console.log(list.children[sp].spNum)
-          console.log('cnm----------')
-          }
-        }
-      });
-    },
+    // //购物车加减商品-对应列表label数量
+    // reduceAdd(arr,num) {
+    //   this.fenleiList.forEach((list) => {
+    //     if (list.children.length !== 0) {
+    //       var sp = list.children.findIndex((child) => child.id === arr.sku.goodsId);
+    //       if(sp!==-1){
+    //         if(!num){
+    //              list.children[sp].spNum=list.children[sp].spNum--
+    //              console.log(list.children[sp].spNum--)
+    //              console.log(list.children[sp].spNum)
+    //              console.log('caaac------------------->')
+    //             }else{
+    //               list.children[sp].spNum ++
+    //             }
+    //           list.spNum = 0;
+    //           list.children.forEach((child) => {
+    //         if (child.spNum) {
+    //            list.spNum+=child.spNum
+    //             console.log(list.spNum)
+    //         }
+    //       });
+    //       console.log(list.children[sp].spNum)
+    //       console.log('cnm----------')
+    //       }
+    //     }
+    //   });
+    // },
     //结算
     jiesuan() {
       let _this = this;
